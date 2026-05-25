@@ -1,0 +1,18 @@
+.line-1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.container {
+  width: 40%;
+  margin: 0;
+  display: flex;
+  border: 2px solid red;
+}
+
+.section {
+  flex: 1;
+  background-color: pink;
+  padding: 20px;
+  border: 1px solid black;
+}

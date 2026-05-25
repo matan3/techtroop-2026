@@ -1,0 +1,19 @@
+.line-1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.container {
+  display: flex;
+  height: 100px;
+}
+
+.left-section {
+  flex: 1;
+  background-color: #ffb5b5;
+}
+
+.right-section {
+  width: 20px; 
+  background-color: #fe5555;
+}
