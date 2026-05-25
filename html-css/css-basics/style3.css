@@ -1,0 +1,10 @@
+
+.bookmark-card {
+    display: inline-block;
+    width: 150px;
+    margin: 3px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    text-align: center;
+}

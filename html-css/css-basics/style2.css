@@ -1,0 +1,13 @@
+
+.bookmark-card {
+    display: inline-block;
+    width: 100px;
+    margin: 3px;
+    padding: 10px 10px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #b0fab9;
+    color: #8f6df4;
+}

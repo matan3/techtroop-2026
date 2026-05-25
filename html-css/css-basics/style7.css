@@ -1,0 +1,19 @@
+.image-container img {
+    width: 100%;
+}
+
+.image-container .text-overlay {
+    position: absolute;
+    top: 0px;
+    left: 20px;
+}
+
+.text-overlay h1:first-child {
+    opacity: 0.25;
+    visibility:visible;
+}
+
+.text-overlay h1:last-child {
+    color: rgb(63, 61, 61);
+    background-color: purple;
+}

@@ -1,0 +1,64 @@
+* {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+  background-color: #eeeef8;
+}
+
+.my-title {
+  color: rgb(72, 145, 222);
+  text-align: center;
+  font-size: 2em;
+}
+
+.main-container {
+  background-color: #ffffff;
+  padding: 30px;
+}
+
+.main-container fieldset {
+  background-color: rgb(216, 208, 208);
+  border: 1px solid #cccccc;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 5px solid rgb(72, 145, 222);
+}
+
+.main-container fieldset legend {
+  background-color: white;
+  color: rgb(72, 145, 222);
+  padding: 5px 15px;
+  font-weight: bold;
+}
+
+.main-container fieldset label {
+  background-color: rgb(216, 208, 208);
+  padding: 15px;
+  color: #1b2197;
+}
+
+.main-container fieldset input,
+.main-container fieldset textarea,
+.main-container fieldset select {
+  background-color: white;
+  border: 2px solid grey;
+}
+
+
+.btn-submit {
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 8px 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-reset {
+  background-color: #dc3545;
+  color: #ffffff;
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+}

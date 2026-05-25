@@ -1,0 +1,40 @@
+* {
+    background-color: grey;
+}
+
+#first {
+    background-color: rgb(77, 221, 24);
+}
+
+#second {
+    background-color: rgb(238, 102, 12);
+}
+
+.box {
+    display: inline-block; 
+    width: 40px;          
+    height: 40px;         
+    margin: 1px;       
+}
+
+.prompt {
+    color: black;
+}
+
+input {
+    background-color: #ffffff;
+    border: 5px solid #ffffff;
+    display: block-inline;
+    width: 100px;
+    height: 10px;
+    box-shadow: none;
+}
+
+.button {
+    background-color: green;
+    border: 3px solid rgb(5, 80, 5);
+    width: 40px;
+    height: 23px;
+    box-shadow: none;
+}
+

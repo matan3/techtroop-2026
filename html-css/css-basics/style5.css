@@ -1,0 +1,29 @@
+
+table {
+    border: 5px solid #9aa0ab;
+    width: 100%;
+    border-spacing: 0;   
+}
+
+th {
+    background-color: #bec8d7;
+    color: #000000;
+    font-weight: 600;
+    padding: 14px 16px;
+    border-bottom: 3px solid #9aa0ab;
+}
+
+td {
+    padding: 12px 16px;
+    border-bottom: 3px solid #9aa0ab;
+    background-color: #5deb7a; 
+}
+
+td:nth-child(2) {
+    font-weight: bold;
+}
+
+td:nth-child(8) {
+    font-weight: bold;
+}
+

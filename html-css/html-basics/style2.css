@@ -1,0 +1,46 @@
+* {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: beige;
+}
+
+.my-title {
+  color: rgb(241, 100, 34);
+  text-align: center;
+  font-size: 2em;
+}
+
+.content {
+  color: rgb(84, 78, 76);
+  font-style: italic;
+  font-weight: bold;
+}
+
+.list-of-items {
+  background-color: rgb(166, 214, 248);
+}
+
+.list-of-items ul,
+.list-of-items li {
+  margin: 10px 0;
+  padding-left: 5px;
+  background-color: transparent;
+}
+
+.list-of-items strong {
+  color: rgb(241, 100, 34);
+  background-color: transparent;
+}
+
+.hobbies {
+  background-color: transparent;
+}
+
+.sub-title {
+  background-color: rgb(191, 222, 237);
+  color: rgb(68, 68, 240);
+  font-size: 2em;
+  border-left: 5px solid rgb(127, 193, 226);
+  padding-bottom: 15px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
