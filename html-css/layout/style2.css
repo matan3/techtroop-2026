@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background: linear-gradient(to right, blue, purple);
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+}
+
+/* ------------------------ nav*/
+
+.nav .nav-list {
+  display: flex;
+  list-style-type: none;
+  font-size: 14px;
+  width: 100%;
+}
+
+.nav .nav-list .nav-item {
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.nav .nav-list .nav-item.nav-right {
+  margin-left: auto;
+}
+
+/* ------------------------ dropdown*/
+
+.nav .nav-list .nav-item:hover {
+  background-color: purple;
+}
+
+.nav .nav-list .nav-item.dropdown {
+  position: relative;
+}
+
+.nav .nav-list .nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  color: black;
+  list-style: none;
+  min-width: 250px;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.dropdown-menu li {
+  padding: 15px;
+  border: 1px solid rgb(247, 249, 250);
+}
+
+.dropdown-menu li:hover {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+
+/* ------------------------ main*/
+
+main {
+  flex: 1;
+  background-color: rgb(247, 249, 250);
+  padding: 20px;
+}
+
+main .content {
+  background-color: white;
+  padding: 30px;
+  margin: 15px;
+  border-radius: 5px;
+  border: 1px solid rgb(220, 220, 220);
+  text-align: center;
+}
+
+main .content .content-title {
+  padding: 15px;
+}
+
+main .content .content-text {
+  padding: 15px;
+}

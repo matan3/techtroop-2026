@@ -1,0 +1,115 @@
+body {
+  margin: 0;
+  padding: 50px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, blue, purple);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 600px;
+}
+
+form .title {
+  margin: 0;
+  color: #333;
+  text-align: center;
+}
+
+form .description {
+  margin: 0 0 25px 0;
+  color: #666;
+  font-size: 12px;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.field label,
+.field-title {
+  font-weight: bold;
+  font-size: 14px;
+  color: #444;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.checkbox-row {
+  display: flex;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.checkbox-group label {
+  cursor: pointer;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.button-save {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  color: #555;
+}
+
+.button-save:hover {
+  background-color: #e2e2e2;
+}
+
+.button-send {
+  background: linear-gradient(to right, deepskyblue, lightblue);
+  border: none;
+  color:white;
+}
+
+.button-send:hover {
+  background: linear-gradient(to right, #00b2ee, #a4d3ee);
+}
