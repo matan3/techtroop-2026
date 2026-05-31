@@ -1,0 +1,15 @@
+@media (min-width: 769px) {
+  .box {
+    height: 150px;
+    width: 300px;
+    background-color: blue;
+  }
+}
+
+@media (max-width: 768px) {
+  .box {
+    height: 150px;
+    width: 100%;
+    background-color: red;
+  }
+}
