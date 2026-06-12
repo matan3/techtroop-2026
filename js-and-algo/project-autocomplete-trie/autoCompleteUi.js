@@ -33,7 +33,14 @@ class AutocompleteUI {
             console.log(`Suggestions for '${prefix}': None\n`);
             return;
         }
-        console.log(`Suggestions for '${prefix}': ${suggestions.join(', ')}\n`);
+        const formatted = suggestions
+            .map(item => `${item.word} (${item.freq})`)
+            .join(', ');
+        console.log(`Suggestions for '${prefix}': ${formatted}\n`);
+    }
+
+    displayUseSuccess(word, newCount) {
+        console.log(`✓ Incremented usage for '${word}' (now ${newCount})\n`);
     }
 
     displayHelp() {

@@ -3,6 +3,7 @@ class TrieNode {
     this.value = char;
     this.children = {};
     this.isEndOfWord = false;
+    this.frequency = 0;
   }
 }
 
@@ -46,7 +47,7 @@ class AutoCompleteTrie {
 
   allWordsHelper(prefix, node, allWords) {
     if (node.isEndOfWord) {
-      allWords.push(prefix);
+      allWords.push({ word: prefix, freq: node.frequency });
     }
     for (let letter in node.children) {
       this.allWordsHelper(prefix + letter, node.children[letter], allWords);
@@ -60,7 +61,22 @@ class AutoCompleteTrie {
       return allWords;
     }
     this.allWordsHelper(prefix, node, allWords);
-    return allWords;
+    return allWords.sort((a, b) => b.freq - a.freq);
+  }
+
+  use(word) {
+    let current = this.root;
+    for (let letter of word) {
+      if (!current.children[letter]) {
+        return false;
+      }
+      current = current.children[letter];
+    }
+    if (!current.isEndOfWord) {
+      return false;
+    }
+    current.frequency++;
+    return current.frequency;
   }
 
 }

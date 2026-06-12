@@ -53,6 +53,19 @@ class AppController {
                     }
                     break;
 
+                case 'use':
+                    if (!arg) {
+                        this.ui.displayError("Missing word. Usage: use <word>");
+                    } else {
+                        const newCount = this.trie.use(arg);
+                        if (newCount === false) {
+                            this.ui.displayError(`'${arg}' not found in dictionary`);
+                        } else {
+                            this.ui.displayUseSuccess(arg, newCount);
+                        }
+                    }
+                    break;
+
                 case 'help':
                     this.ui.displayHelp();
                     break;
