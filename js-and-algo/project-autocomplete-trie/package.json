@@ -1,0 +1,11 @@
+{
+  "name": "autocomplete-trie",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0" 
+  }
+}
