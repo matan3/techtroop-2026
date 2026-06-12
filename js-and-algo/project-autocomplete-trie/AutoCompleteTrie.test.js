@@ -1,4 +1,4 @@
-import AutoCompleteTrie from './AutoCompleteTrie.js';
+import AutoCompleteTrie from './autoCompleteTrie.js';
 
 describe('AutoCompleteTrie Tests', () => {
 

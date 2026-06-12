@@ -68,18 +68,3 @@ class AutoCompleteTrie {
 export default AutoCompleteTrie;
 
 
-// const trie = new AutoCompleteTrie();
-// trie.addWord("run");
-// trie.addWord("running");
-
-// console.log(JSON.stringify(trie, null, 2));
-
-// console.log(trie.findWord("running"));
-// console.log(trie.findWord("run"));
-// console.log(trie.findWord("run1"));
-// console.log(trie.findWord("aa"));
-
-// // console.log(trie.getRemainingTree("ru", trie.root));
-// console.log(JSON.stringify(trie.getRemainingTree("r", trie.root), null, 2));
-
-
