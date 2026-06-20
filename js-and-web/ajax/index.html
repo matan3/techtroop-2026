@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <title>API</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <button onclick="fetch('0439023521')">Get Data</button>
+    <button onclick="fetch2('isbn', '9789814561778')">Get isbn</button>
+    <button onclick="fetch2('title', 'How to Win Friends and Influence People')">Get Title</button>
+    <button onclick="fetch3('isbn', '9789814561778')">Get isbn - specific information</button>
+
+    <input type="text" id="searchInput">
+    <button id="searchBtn">Search</button>
+    <div id="gifContainer"></div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
