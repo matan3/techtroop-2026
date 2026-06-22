@@ -81,3 +81,45 @@ const armstrongNumbers = function () {
 armstrongNumbers();
 
 
+
+
+
+// for (let word of words) {
+//     if (wordCounts2[word]) {
+//         wordCounts2[word]++;
+//     } else {
+//         wordCounts2[word] = 1;
+//     }
+// }
+// console.table(wordCounts2);
+
+const wordCounts2 = {}
+const story = "In the beginning there was light. Then there were wolves. Finally there was a big fire. Ultimately, Shelob the wolf-master put out the fire with her feet. But until then, the fire caused one heck of a lot of damage."
+const words = story.split(" ");
+
+const countReduce = words.reduce(function (wordCounts2, word) {
+    if (wordCounts2[word]) {
+        wordCounts2[word]++;
+    } else {
+        wordCounts2[word] = 1;
+    }
+    return wordCounts2;
+}, wordCounts2);
+console.table(wordCounts2);
+
+
+const add = function (num) {
+    let x = num;
+    const innerAdd = function (y) {
+        return x + y;
+    }
+    return innerAdd;
+};
+
+
+function add2(x){
+    return function (y){
+        return x + y;
+    }
+}
+console.log(add2(5)(2));

@@ -50,7 +50,7 @@ class Principal extends Person {
   expelStudent(student) {
     this.students = this.students.filter(s => s.name !== student.name);
   }
-  transferStudent(student, principal){
+  transferStudent(student, principal) {
     this.expelStudent(student)
     principal.recruitStudent(student)
   }
@@ -89,3 +89,35 @@ console.log(p1.students) //should print Array(1) [Student] - the student should 
 p1.transferStudent(s2, p2)
 console.log(p1.students) //should print Array(0) []
 console.log(p2.students) //should print Array(1) [Student] - the student should be Byron
+
+class Page {
+  constructor(text) {
+    this.text = text
+  }
+}
+
+class Notebook {
+  constructor(pageNum) {
+    this.pageNum = pageNum
+    this.pages = []
+  }
+
+  write(page) {
+    this.pages.push(page)
+  }
+}
+
+class Diary extends Notebook {
+  constructor(pageNum, owner) {
+    super(pageNum)
+    this.owner = owner
+  }
+}
+
+const myDiary = new Diary(50, "Shila")
+const mathNotebook = new Notebook(200)
+const p1 = new Page("Pythagoreas realized that the sum of the squares of the sides of a right triangle will equal the square of the hypotenuse")
+myDiary.pages.push(new Page("I think I'm in love with a Greek man."))
+
+console.log(myDiary.pages[0].text)
+
