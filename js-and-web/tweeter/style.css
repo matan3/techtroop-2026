@@ -1,0 +1,141 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f9fa;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#container {
+    max-width: 600px;
+    width: 100%;
+}
+
+h1 {
+    color: #1da1f2; 
+    text-align: center;
+}
+
+
+#input-container {
+    background: white;
+    padding: 15px;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+#input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #e1e8ed;
+    border-radius: 9999px; 
+    outline: none;
+    font-size: 15px;
+}
+
+#post {
+    background-color: #1da1f2;
+    color: white;
+    border: none;
+    padding: 0 20px;
+    border-radius: 9999px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#post:hover {
+    background-color: #1a91da;
+}
+
+
+.post {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border: 1px solid #e1e8ed;
+    position: relative;
+}
+
+.post-text {
+    font-size: 18px;
+    color: #0f1419;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+
+.delete {
+    color: #f4212e; 
+    font-size: 13px;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.delete:hover {
+    text-decoration: underline;
+}
+
+.comments {
+    border-top: 1px solid #f7f9fa;
+    padding-top: 10px;
+    margin-bottom: 15px;
+}
+
+.comment {
+    background-color: #f7f9fa;
+    padding: 8px 12px;
+    border-radius: 12px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #536471;
+}
+
+
+.delete-comment {
+    color: #959da4;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+.delete-comment:hover {
+    color: #f4212e;
+}
+
+
+.comment-input {
+    width: 70%;
+    padding: 8px 12px;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    outline: none;
+    font-size: 13px;
+}
+
+.comment-button {
+    background-color: #eff3f4;
+    color: #0f1419;
+    border: 1px solid #cfd9de;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 5px;
+    font-size: 13px;
+}
+
+.comment-button:hover {
+    background-color: #e1e8ed;
+}
