@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 import { Tweeter } from './model.js';
 import { Renderer } from './render.js';
 
@@ -36,7 +35,6 @@ $("#posts").on("click", ".delete-comment", function () {
     tweeter.removeComment(postId, commentId);
     renderer.renderPosts(tweeter.getPosts());
 });
-=======
 export const Tweeter = function () {
 
        let _posts = [
@@ -119,4 +117,3 @@ tweeter.addComment("p3", "Damn straight it is!");
 tweeter.addComment("p2", "Second the best!");
 tweeter.removeComment("p2", "c6");
 console.log(JSON.stringify(tweeter.getPosts(), null, 2));
->>>>>>> Stashed changes
