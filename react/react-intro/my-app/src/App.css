@@ -1,0 +1,16 @@
+.weather-box {
+  height: 300px;
+  width: 300px;
+}
+
+.freezing {
+  background-color: aqua; 
+}
+
+.hell-scape {
+  background-color: red; 
+}
+
+.fair {
+  background-color: orange; 
+}
