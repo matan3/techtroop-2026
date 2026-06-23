@@ -38,7 +38,7 @@ h1 {
     font-size: 15px;
 }
 
-#post {
+#twit {
     background-color: #1da1f2;
     color: white;
     border: none;
@@ -48,7 +48,7 @@ h1 {
     cursor: pointer;
 }
 
-#post:hover {
+#twit:hover {
     background-color: #1a91da;
 }
 
