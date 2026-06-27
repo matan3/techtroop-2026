@@ -137,9 +137,9 @@ button, select {
     transition: background-color 0.2s;
 }
 
-/* Main Action Button */
+
 #generate-btn {
-    background-color: #2fad48; /* Facebook Blue */
+    background-color: #2fad48;
     color: #ffffff;
 }
 
