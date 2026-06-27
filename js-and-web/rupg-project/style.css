@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f2f5; 
+    color: #333333;
+    padding: 20px;
+}
+
+.app-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+ .user-header, .friends-sidebar, .quote-section, .pokemon-section, .about-section {
+    background-color: #f6fdff;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.section-label {
+    font-weight: bold;
+    color: #65676b;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; 
+    border: 3px solid #1877f2; 
+    object-fit: cover;
+}
+
+.user-details h2 {
+    font-size: 24px;
+    color: #050505;
+    margin-bottom: 5px;
+}
+
+.user-details p {
+    color: #65676b;
+    font-size: 16px;
+}
+
+.quote-text {
+    font-style: italic;
+    font-size: 18px;
+    color: #1c1e21;
+    line-height: 1.4;
+    margin-bottom: 5px;
+}
+
+.quote-author {
+    font-size: 14px;
+    color: #65676b;
+    text-align: right;
+    font-weight: bold;
+}
+
+.pokemon-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.pokemon-section img {
+    width: 60px;
+    height: 60px;
+    background-color: #f0f2f5;
+    border-radius: 50%;
+}
+
+.pokemon-section p {
+    font-size: 16px;
+    font-weight: bold;
+    color: #050505;
+}
+
+#about-me-text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #050505;
+}
+
+#error-message {
+    background-color: #ffebe9;
+    border: 1px solid #ffc8c3;
+    color: #b30000;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+button, select {
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Main Action Button */
+#generate-btn {
+    background-color: #2fad48; /* Facebook Blue */
+    color: #ffffff;
+}
+
+#generate-btn:hover {
+    background-color: #74b180;
+}
+
+#generate-btn:disabled {
+    background-color: #88e1a6;
+    cursor: not-allowed;
+}
+
+#save-btn, #load-btn {
+    background-color: #e4e6eb;
+    color: #050505;
+}
+
+#save-btn:hover, #load-btn:hover {
+    background-color: #d8dadf;
+}
+
+select {
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    color: #495057;
+}
+
+.friends-sidebar h3 {
+    font-size: 18px;
+    color: #050505;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e4e6eb;
+    padding-bottom: 10px;
+}
+
+#friends-list {
+    list-style: none;
+}
+
+#friends-list li {
+    padding: 10px 0;
+    font-size: 15px;
+    color: #050505;
+    border-bottom: 1px solid #f0f2f5;
+}
+
+#friends-list li:last-child {
+    border-bottom: none;
+}
