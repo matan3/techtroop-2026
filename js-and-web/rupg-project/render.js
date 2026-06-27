@@ -1,5 +1,5 @@
 const renderer = {
-    renderMainUser: function(mainUser) {
+    renderMainUser: function (mainUser) {
         const container = document.getElementById('main-user-container');
         container.innerHTML = `
             <img src="${mainUser.picture}" alt="${mainUser.firstName}">
@@ -10,14 +10,14 @@ const renderer = {
         `;
     },
 
-    renderFriends: function(friends) {
+    renderFriends: function (friends) {
         const container = document.getElementById('friends-list');
         container.innerHTML = friends.map(friend => `
             <li>${friend.firstName} ${friend.lastName}</li>
         `).join('');
     },
 
-    renderQuote: function(quote) {
+    renderQuote: function (quote) {
         const container = document.getElementById('quote-container');
         container.innerHTML = `
             <p class="quote-text">"${quote}"</p>
@@ -25,7 +25,7 @@ const renderer = {
         `;
     },
 
-    renderPokemon: function(pokemon) {
+    renderPokemon: function (pokemon) {
         const container = document.getElementById('pokemon-container');
         container.innerHTML = `
             <img src="${pokemon.image}" alt="${pokemon.name}">
@@ -33,16 +33,25 @@ const renderer = {
         `;
     },
 
-    renderAboutMe: function(text) {
+    renderAboutMe: function (text) {
         document.getElementById('about-me-text').innerText = text;
     },
 
-    renderAll: function(data) {
+    renderAll: function (data) {
         this.renderMainUser(data.mainUser);
         this.renderFriends(data.friends);
         this.renderQuote(data.quote);
         this.renderPokemon(data.pokemon);
         this.renderAboutMe(data.aboutMe);
+    },
+
+    renderDropdown: function (savedUsersObject) {
+        const dropdown = document.getElementById('saved-users-dropdown');
+        dropdown.innerHTML = '<option value="">-- Load Saved User --</option>';
+        const savedNames = Object.keys(savedUsersObject);
+        savedNames.forEach(name => {
+            dropdown.innerHTML += `<option value="${name}">${name}</option>`;
+        });
     }
 };
 

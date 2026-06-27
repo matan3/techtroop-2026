@@ -8,6 +8,8 @@ const model = {
         aboutMe: ""
     },
 
+    savedUsers: {},
+
     capitalize: function (string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     },
@@ -93,6 +95,28 @@ const model = {
             console.error('Error fetching text:', error.message);
             throw error;
         }
+    },
+
+    saveCurrentPage: function () {
+        if (!this.data.mainUser) return; 
+        const userKey = `${this.data.mainUser.firstName} ${this.data.mainUser.lastName}`;
+        this.savedUsers[userKey] = JSON.parse(JSON.stringify(this.data));
+        localStorage.setItem('rupg_saved_users', JSON.stringify(this.savedUsers));
+    },
+
+    initStorage: function () {
+        const stored = localStorage.getItem('rupg_saved_users');
+        if (stored) {
+            this.savedUsers = JSON.parse(stored);
+        }
+    },
+
+    loadSavedPage: function (userKey) {
+        if (this.savedUsers[userKey]) {
+            this.data = JSON.parse(JSON.stringify(this.savedUsers[userKey]));
+            return this.data;
+        }
+        return null;
     }
 };
 
