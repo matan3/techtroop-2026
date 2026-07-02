@@ -1,12 +1,21 @@
 import { useState } from 'react'
 import { format } from 'date-fns';
+import { useDisclosure } from '@mantine/hooks';
+import { Modal, Text } from '@mantine/core';
 
 function Form() {
 
+    const [opened, { open, close }] = useDisclosure(false);
+    const [selectedNote, setSelectedNote] = useState(null);
     const [text, setText] = useState('');
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('')
     const [notes, setNotes] = useState([]);
+
+    const handleNoteClick = (note) => {
+        setSelectedNote(note);
+        open();
+    };
 
     const handleAdd = () => {
         if (text.length === 0) {
@@ -33,6 +42,23 @@ function Form() {
 
     return (
         <>
+            <Modal
+                opened={opened}
+                onClose={close}
+                withCloseButton={true}
+                centered
+            >
+                <span className="note-date">
+                    {selectedNote?.date}
+                </span>
+                <span className="note-title">
+                    {selectedNote?.title}
+                </span>
+                <Text className="note-text">
+                    {selectedNote?.text}
+                </Text>
+            </Modal>
+
             <div className="form-container">
                 <input
                     value={title}
@@ -50,14 +76,16 @@ function Form() {
                     }}
                     rows={1}
                     placeholder="Your note..."
-                    onInput={(e) => autoResize(e.target)} 
+                    onInput={(e) => autoResize(e.target)}
                 />
                 <button onClick={handleAdd}>Add</button>
             </div>
 
             <div className="notes-grid">
                 {notes.map((note, index) =>
-                    <div key={index} className="note-card">
+                    <div key={index}
+                        className="note-card"
+                        onClick={() => handleNoteClick(note)}>
                         <button className="delete-btn" onClick={() => handleDelete(index)}>
                             &times;
                         </button>
