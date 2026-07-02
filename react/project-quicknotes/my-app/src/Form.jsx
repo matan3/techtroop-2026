@@ -26,15 +26,21 @@ function Form() {
         setNotes(newNotes);
     }
 
+    function autoResize(textarea) {
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+    }
+
     return (
         <>
             <div className="form-container">
-                <textarea
+                <input
                     value={title}
                     onChange={(e) => {
                         setTitle(e.target.value)
                     }}
                     placeholder="Title"
+                    maxLength={200}
                 />
                 <textarea
                     value={text}
@@ -42,8 +48,9 @@ function Form() {
                         setText(e.target.value)
                         setDate(format(new Date(), "MMM do h:mm a"))
                     }}
-                    rows={6}
+                    rows={1}
                     placeholder="Your note..."
+                    onInput={(e) => autoResize(e.target)} 
                 />
                 <button onClick={handleAdd}>Add</button>
             </div>

@@ -9,13 +9,22 @@
   padding: 12px;
 }
 
+.form-container input[type="text"],
 .form-container textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #ccc; 
   border-radius: 6px;
-  resize: vertical;
   box-sizing: border-box;
+  font-family: inherit; 
+  font-size: 14px;
+  outline: none; 
+}
+
+.form-container textarea {
+  overflow-y: hidden; 
+  resize: none;      
+  min-height: 50px;
 }
 
 .form-container button {
