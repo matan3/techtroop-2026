@@ -49,12 +49,21 @@
   position: relative;
 }
 
+.note-title {
+  color: #666;
+  display: block;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: black;
+  padding-top: 10px;
+}
+
 .note-text {
   margin: 0 0 8px 0;
   font-weight: 500;
   white-space: pre-wrap;
-  font-weight: bold;
   color: black;
+  padding-top: 10px;
 }
 
 .note-date {

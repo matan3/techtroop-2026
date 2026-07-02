@@ -4,12 +4,18 @@ import { format } from 'date-fns';
 function Form() {
 
     const [text, setText] = useState('');
+    const [title, setTitle] = useState('');
     const [date, setDate] = useState('')
     const [notes, setNotes] = useState([]);
 
     const handleAdd = () => {
-        setNotes([...notes, { text, date }]);
+        if (text.length === 0) {
+            window.alert("Cannot add an empty note! Please write something first");
+            return;
+        }
+        setNotes([...notes, { title, text, date }]);
         setText('')
+        setTitle('')
     }
 
     const handleDelete = index => {
@@ -23,6 +29,13 @@ function Form() {
     return (
         <>
             <div className="form-container">
+                <textarea
+                    value={title}
+                    onChange={(e) => {
+                        setTitle(e.target.value)
+                    }}
+                    placeholder="Title"
+                />
                 <textarea
                     value={text}
                     onChange={(e) => {
@@ -42,6 +55,7 @@ function Form() {
                             &times;
                         </button>
                         <small className="note-date">{note.date}</small>
+                        <p className="note-title">{note.title}</p>
                         <p className="note-text">{note.text}</p>
                     </div>
                 )}
