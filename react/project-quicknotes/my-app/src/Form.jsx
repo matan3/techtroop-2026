@@ -7,13 +7,16 @@ function Form() {
 
     const [opened, { open, close }] = useDisclosure(false);
     const [selectedNote, setSelectedNote] = useState(null);
+    const [selectedIndex, setSelectedIndex] = useState(null);
+
     const [text, setText] = useState('');
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('')
     const [notes, setNotes] = useState([]);
 
-    const handleNoteClick = (note) => {
-        setSelectedNote(note);
+    const handleNoteClick = (note, index) => {
+        setSelectedNote({ ...note });
+        setSelectedIndex(index);
         open();
     };
 
@@ -22,12 +25,24 @@ function Form() {
             window.alert("Cannot add an empty note! Please write something first");
             return;
         }
-        setNotes([...notes, { title, text, date }]);
+        setNotes([...notes, { title, text, date, updatedDate: null }]);
         setText('')
         setTitle('')
     }
 
-    const handleDelete = index => {
+    const handleUpdate = () => {
+        if (!selectedNote) return;
+        const updatedNotes = [...notes];
+        updatedNotes[selectedIndex] = {
+            ...selectedNote,
+            updatedDate: format(new Date(), "MMM do h:mm a")
+        };
+        setNotes(updatedNotes);
+        close();
+    };
+
+    const handleDelete = (e, index) => {
+        e.stopPropagation();
         const isConfirmed = window.confirm("Are you sure you want to delete your note?");
         if (!isConfirmed) return;
         const newNotes = [...notes];
@@ -48,15 +63,21 @@ function Form() {
                 withCloseButton={true}
                 centered
             >
-                <span className="note-date">
-                    {selectedNote?.date}
-                </span>
-                <span className="note-title">
-                    {selectedNote?.title}
-                </span>
-                <Text className="note-text">
-                    {selectedNote?.text}
-                </Text>
+                <input
+                    className="note-title modal-input-title"
+                    value={selectedNote?.title || ''}
+                    onChange={(e) => setSelectedNote({ ...selectedNote, title: e.target.value })}
+                />
+                <textarea
+                    className="note-text modal-textarea-text"
+                    value={selectedNote?.text || ''}
+                    onChange={(e) => setSelectedNote({ ...selectedNote, text: e.target.value })}
+                    onInput={(e) => autoResize(e.target)}
+                    rows={1}
+                />
+                <button className="update-btn" onClick={handleUpdate}>
+                    Update
+                </button>
             </Modal>
 
             <div className="form-container">
@@ -85,13 +106,20 @@ function Form() {
                 {notes.map((note, index) =>
                     <div key={index}
                         className="note-card"
-                        onClick={() => handleNoteClick(note)}>
-                        <button className="delete-btn" onClick={() => handleDelete(index)}>
+                        onClick={() => handleNoteClick(note, index)}>
+                        <button className="delete-btn" onClick={(e) => handleDelete(e, index)}>
                             &times;
                         </button>
-                        <small className="note-date">{note.date}</small>
                         <p className="note-title">{note.title}</p>
                         <p className="note-text">{note.text}</p>
+                        <div className="note-dates-container">
+                            <small className="note-date">Created: {note.date}</small>
+                            {note.updatedDate && (
+                                <small className="note-date note-date-updated">
+                                    Updated: {note.updatedDate}
+                                </small>
+                            )}
+                        </div>
                     </div>
                 )}
             </div>
