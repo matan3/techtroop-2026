@@ -21,6 +21,8 @@ function Form() {
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('')
     const [category, setCategory] = useState('Personal');
+    const [searchTerm, setSearchTerm] = useState('');
+    const [activeFilter, setActiveFilter] = useState('All');
 
     const [notes, setNotes] = useState(() => {
         const saved = localStorage.getItem("my-notes");
@@ -31,9 +33,10 @@ function Form() {
         localStorage.setItem("my-notes", JSON.stringify(notes));
     }, [notes]);
 
-    const handleNoteClick = (note, index) => {
+    const handleNoteClick = (note) => {
+        const realIndex = notes.findIndex(n => n.id === note.id);
         setSelectedNote({ ...note });
-        setSelectedIndex(index);
+        setSelectedIndex(realIndex);
         open();
     };
 
@@ -49,7 +52,7 @@ function Form() {
     }
 
     const handleUpdate = () => {
-        if (!selectedNote) return;
+        if (!selectedNote || selectedIndex === null) return;
         const updatedNotes = [...notes];
         updatedNotes[selectedIndex] = {
             ...selectedNote,
@@ -59,19 +62,29 @@ function Form() {
         close();
     };
 
-    const handleDelete = (e, index) => {
+    const handleDelete = (e, noteId) => {
         e.stopPropagation();
         const isConfirmed = window.confirm("Are you sure you want to delete your note?");
-        if (!isConfirmed) return;
-        const newNotes = [...notes];
-        newNotes.splice(index, 1);
-        setNotes(newNotes);
+        if (!isConfirmed) return;     
+        setNotes(notes.filter(note => note.id !== noteId));
     }
 
     function autoResize(textarea) {
         textarea.style.height = 'auto';
         textarea.style.height = textarea.scrollHeight + 'px';
     }
+
+    const filteredNotes = notes.filter(note => {
+        const matchesSearch =
+            note.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            note.text.toLowerCase().includes(searchTerm.toLowerCase());
+
+        const matchesCategory =
+            activeFilter === 'All' ||
+            note.category === activeFilter;
+
+        return matchesSearch && matchesCategory;
+    });
 
     return (
         <>
@@ -109,6 +122,35 @@ function Form() {
                 </button>
             </Modal>
 
+            <div className="filter-controls-container">
+                <input 
+                    type="text"
+                    className="search-bar"
+                    placeholder="Search notes by title or content..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                
+                <div className="filter-buttons-group">
+                    <button 
+                        className={`filter-btn ${activeFilter === 'All' ? 'active' : ''}`}
+                        onClick={() => setActiveFilter('All')}
+                    >
+                        All
+                    </button>
+                    {Object.keys(CATEGORIES).map(key => (
+                        <button
+                            key={key}
+                            className={`filter-btn ${activeFilter === key ? 'active' : ''}`}
+                            style={{ '--category-color': CATEGORIES[key].color }}
+                            onClick={() => setActiveFilter(key)}
+                        >
+                            {CATEGORIES[key].label}
+                        </button>
+                    ))}
+                </div>
+            </div>
+
             <div className="form-container">
                 <input
                     value={title}
@@ -140,14 +182,14 @@ function Form() {
             </div>
 
             <div className="notes-grid">
-                {notes.map((note, index) => {
+                {filteredNotes.map((note, index) => {
                     const noteColor = CATEGORIES[note.category]?.color || CATEGORIES.Other.color;
                     return (
                         <div key={index}
                             className="note-card"
                             style={{ backgroundColor: noteColor }}
-                            onClick={() => handleNoteClick(note, index)}>
-                            <button className="delete-btn" onClick={(e) => handleDelete(e, index)}>
+                            onClick={() => handleNoteClick(note)}>
+                            <button className="delete-btn" onClick={(e) => handleDelete(e, note.id)}>
                                 &times;
                             </button>
                             <span className="category-badge">{note.category || 'Other'}</span>
