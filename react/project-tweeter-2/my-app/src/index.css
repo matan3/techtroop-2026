@@ -119,3 +119,14 @@ body {
   line-height: 1.5;
   color: #fff;
 }
+
+.server-error {
+  background-color: #721c24;
+  color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 15px;
+}

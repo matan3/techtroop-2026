@@ -1,18 +1,13 @@
 import { useState } from 'react';
 
-function CreateTweet({ onAddTweet }) {
+function CreateTweet({ onAddTweet, isSending }) {
     const [text, setText] = useState('');
     const username = 'userName';
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const newTweet = {
-            text: text,
-            username: username,
-            timestamp: Date.now()
-        };
-        onAddTweet(newTweet);
+        onAddTweet(text); 
         setText('');
     };
 
@@ -32,7 +27,7 @@ function CreateTweet({ onAddTweet }) {
                         The tweet can't contain more then 140 chars.
                     </div>
                 )}
-                <button type="submit" disabled={text.length > 140} className="tweet-btn">
+                <button type="submit" disabled={text.length > 140 || isSending} className="tweet-btn">
                     Tweet
                 </button>
             </div>
