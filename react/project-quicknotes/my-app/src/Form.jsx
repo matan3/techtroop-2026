@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { format } from 'date-fns';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Text } from '@mantine/core';
@@ -12,7 +12,14 @@ function Form() {
     const [text, setText] = useState('');
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('')
-    const [notes, setNotes] = useState([]);
+    const [notes, setNotes] = useState(() => {
+        const saved = localStorage.getItem("my-notes");
+        return saved ? JSON.parse(saved) : [];
+    });
+
+    useEffect(() => {
+        localStorage.setItem("my-notes", JSON.stringify(notes));
+    }, [notes]);
 
     const handleNoteClick = (note, index) => {
         setSelectedNote({ ...note });
