@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Profile from './pages/Profile';
 import Navbar from './components/Navbar';
+import { TweetProvider } from './lib/TweetContext';
 
 function App() {
 
@@ -19,13 +20,15 @@ function App() {
 
   return (
     <>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home username={username} />} />
-          <Route path="/profile" element={<Profile username={username} setUsername={setUsername} />} />
-        </Routes>
-      </Router>
+      <TweetProvider>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home username={username} />} />
+            <Route path="/profile" element={<Profile username={username} setUsername={setUsername} />} />
+          </Routes>
+        </Router>
+      </TweetProvider>
     </>
   )
 }
