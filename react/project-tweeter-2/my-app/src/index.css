@@ -31,7 +31,7 @@ body {
   color: #fff;
   font-size: 18px;
   resize: none;
-  min-height: 100px;
+  min-height: auto;
   outline: none;
 }
 
@@ -41,7 +41,7 @@ body {
 
 .form-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   gap: 15px;
   width: 100%;
@@ -130,3 +130,36 @@ body {
   font-weight: bold;
   margin-bottom: 15px;
 }
+
+
+.navbar {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #192734;
+  border-bottom: 1px solid #38444d;
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  z-index: 1000; 
+}
+
+.nav-link {
+  color: #8899a6;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: #1da1f2; 
+}
+
+.home-container {
+  margin-top: 80px;
+}
+
+
