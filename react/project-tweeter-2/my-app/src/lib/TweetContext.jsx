@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
-import { API_URL, getHeaders } from './api';
+import { supabase } from './api'; 
 
 export const TweetContext = createContext();
 
@@ -11,12 +11,12 @@ export function TweetProvider({ children }) {
 
     const fetchTweets = async () => {
         try {
-            const response = await fetch(`${API_URL}?order=date.desc`, {
-                method: 'GET',
-                headers: getHeaders()
-            });
-            if (!response.ok) throw new Error('Failed to fetch tweets');
-            const data = await response.json();
+            const { data, error } = await supabase
+                .from('tweets')
+                .select('*')
+                .order('date', { ascending: false });
+
+            if (error) throw error;
             setTweets(data);
         } catch (error) {
             setErrorMessage(error.message);
@@ -28,12 +28,19 @@ export function TweetProvider({ children }) {
         setIsLoading(true);
         fetchTweets().finally(() => setIsLoading(false));
 
-        const intervalId = setInterval(() => {
-            fetchTweets()
-        }, 7000);
+        const channel = supabase
+            .channel('schema-db-changes')
+            .on(
+                'postgres_changes',
+                { event: 'INSERT', schema: 'public', table: 'tweets' },
+                (payload) => {
+                    setTweets((prevTweets) => [payload.new, ...prevTweets]);
+                }
+            )
+            .subscribe();
 
         return () => {
-            clearInterval(intervalId)
+            supabase.removeChannel(channel);
         };
     }, []);
 
@@ -42,21 +49,16 @@ export function TweetProvider({ children }) {
         setIsLoading(true);
         setErrorMessage('');
 
-        const newTweet = {
-            content: tweetContent,
-            userName: currentUsername || "userName",
-            date: new Date().toISOString()
-        };
-
         try {
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                headers: getHeaders(),
-                body: JSON.stringify(newTweet)
-            });
-
-            if (!response.ok) throw new Error('Could not save your tweet to the server.');
-            setTweets((prevTweets) => [newTweet, ...prevTweets]);
+            const { error } = await supabase
+                .from('tweets')
+                .insert([
+                    {
+                        content: tweetContent,
+                        username: currentUsername || "username"
+                    }
+                ]);
+            if (error) throw error;
         } catch (error) {
             setErrorMessage(error.message);
         } finally {

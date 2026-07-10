@@ -1,8 +1,6 @@
-export const API_URL = "https://lrazzxpwhdtmxcetgtng.supabase.co/rest/v1/Tweets";
-export const API_KEY = "sb_publishable_PYoOQaHg4j7ps7Vo5Br41Q_QfmiyPSB";
+import { createClient } from '@supabase/supabase-js';
 
-export const getHeaders = () => ({
-  "Content-Type": "application/json",
-  "apikey": API_KEY,
-  "Authorization": `Bearer ${API_KEY}`
-});
+const SUPABASE_URL = 'https://qsiuowlmkzdahyzwrbce.supabase.co';
+const SUPABASE_ANON_KEY = '';
+
+export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
