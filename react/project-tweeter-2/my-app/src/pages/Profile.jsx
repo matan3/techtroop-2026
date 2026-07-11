@@ -1,14 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useTweetContext } from '../lib/TweetContext';
+import { supabase } from '../lib/api';
 
-function Profile({ username, setUsername }) {
+function Profile() {
 
-    const [newInput, setNewInput] = useState(username);
+    const { user } = useTweetContext();
+    const [newInput, setNewInput] = useState(user?.user_metadata?.username || '');
 
-    const handleSave = (e) => {
+    useEffect(() => {
+        if (user?.user_metadata?.username) {
+            setNewInput(user.user_metadata.username);
+        }
+    }, [user]);
+
+    const handleSave = async (e) => {
         e.preventDefault();
-        setUsername(newInput)
-        localStorage.setItem("tweeter-username", newInput);
-        alert("Username updated successfully!");
+
+        try {
+            const { error } = await supabase.auth.updateUser({
+                data: { username: newInput }
+            });
+
+            if (error) throw error;
+
+            alert("Username updated successfully in Supabase!");
+            window.location.reload();
+        } catch (error) {
+            alert("Error updating username: " + error.message);
+        }
     };
 
     return (

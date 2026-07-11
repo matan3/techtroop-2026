@@ -1,5 +1,5 @@
-import { createContext, useState, useEffect } from 'react';
-import { supabase } from './api'; 
+import { useContext, createContext, useState, useEffect } from 'react';
+import { supabase } from './api';
 
 export const TweetContext = createContext();
 
@@ -8,6 +8,26 @@ export function TweetProvider({ children }) {
     const [tweets, setTweets] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+
+    const [user, setUser] = useState(null);
+    const [authLoading, setAuthLoading] = useState(true);
+
+    useEffect(() => {
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            setUser(session?.user ?? null);
+            setAuthLoading(false);
+        });
+
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+            setUser(session?.user ?? null);
+            setAuthLoading(false);
+        });
+
+        return () => {
+            subscription.unsubscribe();
+        };
+    }, []);
+
 
     const fetchTweets = async () => {
         try {
@@ -25,6 +45,10 @@ export function TweetProvider({ children }) {
 
     useEffect(() => {
 
+        if (!user) {
+            setTweets([]);
+            return;
+        }
         setIsLoading(true);
         fetchTweets().finally(() => setIsLoading(false));
 
@@ -42,7 +66,7 @@ export function TweetProvider({ children }) {
         return () => {
             supabase.removeChannel(channel);
         };
-    }, []);
+    }, [user]);
 
     const handleAddTweet = async (tweetContent, currentUsername) => {
         if (isLoading) return;
@@ -66,9 +90,31 @@ export function TweetProvider({ children }) {
         }
     };
 
+    const login = async (email, password) => {
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+    };
+
+    const logout = async () => {
+        const { error } = await supabase.auth.signOut();
+        if (error) throw error;
+    };
+
+
     return (
-        <TweetContext value={{ tweets, isLoading, errorMessage, handleAddTweet }}>
+        <TweetContext value={{ 
+            tweets, 
+            isLoading, 
+            errorMessage, 
+            handleAddTweet,
+            user,          
+            authLoading,   
+            login,         
+            logout     
+        }}>
             {children}
         </TweetContext>
     );
 }
+
+export const useTweetContext = () => useContext(TweetContext);
