@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furniture Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="moneyDisplay">
+        Your Balance: $<span id="moneyValue"></span>
+    </div>
+
+
+    <h1>Furniture Store Portal</h1>
+
+    <div class="section">
+        <h2>Check Furniture Price</h2>
+        <input type="text" id="furnitureInput" placeholder="Enter furniture name (e.g., couch)">
+        <button id="checkPriceBtn">Check Price</button>
+        <div id="result" class="message"></div>
+    </div>
+
+    <div class="section">
+        <h2>Buy Furniture</h2>
+        <input type="text" id="buyInput" placeholder="Enter furniture name (e.g., chair)">
+        <button id="buyBtn">Buy Item</button>
+        <div id="buyResult" class="message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

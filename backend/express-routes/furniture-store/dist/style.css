@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 50px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+#moneyDisplay {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px;
+    color: #333;
+    background-color: #e2f0d9;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 5px;
+    border: 1px solid #b5d5a6;
+}
+
+.section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+h2 {
+    color: #555;
+}
+
+input, button {
+    padding: 10px;
+    font-size: 16px;
+    margin: 5px;
+    border-radius: 4px;
+}
+
+input {
+    border: 1px solid #ccc;
+    width: 60%;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.message {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
